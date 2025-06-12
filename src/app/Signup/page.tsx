@@ -1,5 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
+export const dynamicParams = true; // optional but recommended
 
 
 import Image from "next/image";
