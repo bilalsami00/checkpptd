@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+/* darkmode */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Afacad Flux', 'Afacad', 'Roboto', sans-serif;
+
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(
+      -100%
+    ); /* Adjust this based on the number of text spans */
+  }
+}
+
+.animate-slide {
+  display: flex;
+  min-width: 400%; /* Increase width to accommodate all text spans without cutting off */
+  animation: slide 40s linear infinite; /* Slow the animation down to avoid abrupt resets */
+  white-space: nowrap;
+}
+
+@layer components {
+  .gradient-border {
+    @apply mt-6 p-[2px] rounded-full w-[180px] h-[60px] bg-gradient-to-tr 
+  from-[#5CB0E2] to-[#EB6793] transition-colors duration-500 ease-in-out;
+  }
+
+  .gradient-card-border {
+    @apply p-[2px] rounded-[3rem] w-[90%] max-w-[450px] min-h-[450px] md:h-[500px] mx-auto 
+    relative bg-gradient-to-tr from-[#5CB0E2] to-[#EB6793];
+  }
+}
+
+/* darkmode */
+@layer utilities {
+  .bg-app {
+    background-color: var(--background);
+    color: var(--foreground); /* text color */
+  }
+  .dark .bg-app {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  .text-app {
+    color: var(--foreground);
+  }
+
+  .border-app {
+    border-color: var(--foreground);
+  }
+}
+
+/* globals.css */
+
+@layer utilities {
+  /* .txt-72 { font-size: clamp(40px, 2.1vw + 28.5px, 72px); } */
+  .txt-72 {
+    font-size: clamp(36px, 2.84vw + 22.95px, 72px);
+  }
+
+  .txt-66 {
+    font-size: clamp(40px, 1.8vw + 27.2px, 66px);
+  } /* ???? */
+
+  /* .txt-46 { font-size: clamp(28px, 1.14vw + 23.3px, 46px); } */
+  .txt-46 {
+    font-size: clamp(22.5px, 1.67vw + 17.2px, 46px);
+  }
+
+  /* .txt-34 { font-size: clamp(18px, 1.13vw + 14.4px, 34px); } */
+  .txt-34 {
+    font-size: clamp(20.25px, 0.98vw + 17.1px, 34px);
+  }
+
+  .txt-32 {
+  font-size: clamp(20px, 1.14vw + 15.4px, 32px);
+}
+
+
+  .txt-30 {
+    font-size: clamp(18px, 0.96vw + 15.2px, 30px);
+  }
+  .txt-26 {
+    font-size: clamp(17px, 0.94vw + 15px, 26px);
+  }
+
+  /* .txt-24 { font-size: clamp(16px, 0.57vw + 14.2px, 24px); } */
+  .txt-24 {
+    font-size: clamp(18px, 0.43vw + 16.63px, 24px);
+  }
+
+  .txt-btn-24 {
+  font-size: clamp(16px, 1.389vw, 24px);
+}
+
+
+  .txt-22 {
+    font-size: clamp(16px, 0.625vw + 14px, 22px);
+  }
+
+  /* .txt-20 { font-size: clamp(16px, 0.284vw + 15.1px, 20px); } */
+  .txt-20 {
+    font-size: clamp(16px, 0.284vw + 15.1px, 20px);
+  }
+
+  .txt-18 {
+  font-size: clamp(14px, 0.39vw + 11.5px, 18px);
+}
+
+
+
+  .txt-16 {
+    font-size: clamp(13px, 0.39vw + 10px, 16px);
+  }
+
+
+  .txt-14 {
+      font-size: clamp(12px, 0.34vw + 10.8px, 14px);
+    }
+
+
+
+}
+
+
+/* for commented values or untouched values this is the behaviour */
+/* | Class    | 320px  | 768px    | 1024px   | 1280px   | 1440px   | 1728px+ | Max Cap |
+| -------- | ------ | -------- | -------- | -------- | -------- | ------- | ------- |
+| `txt-72` | \~40px | \~51px   | \~58px   | \~65px   | \~70px   | 72px    | 72px    |
+| `txt-66` | \~40px | \~50px   | \~56px   | \~62px   | 66px     | 66px    | 66px    |
+| `txt-46` | \~28px | \~34px   | \~38px   | \~42px   | \~44px   | 46px    | 46px    |
+| `txt-34` | \~18px | \~22px   | \~26px   | \~30px   | \~32px   | 34px    | 34px    |
+| `txt-32` | \~20px | \~24.15px| \~27.1px | \~30px   | \~31.8px | 32px    | 32px    |
+| `txt-30` | \~18px | \~22px   | \~25px   | 30px     | 30px     | 34px    | 34px    |
+| `txt-26` | \~17px | \~20px   | \~23px   | 26px     | 26px     | 26px    | 26px    |
+| `txt-24` | \~16px | \~18.6px | \~20px   | \~22.4px | \~23.8px | 24px    | 24px    |
+| `txt-22` | \~16px | \~18.5px | \~20.5px | 22px     | 22px     | 22px    | 22px    |
+| `txt-20` | \~16px | \~17.5px | \~18.2px | \~18.8px | \~19.4px | 20px    | 20px    |
+| `txt-18` | \~14px | \~14.3px | \~15.3px | \~16.3px | \~17px   | 18px    | 18px    | 
+| `txt-16` | \~13px | \~13px   | \~14px   | \~15px   | \~15.6px | 16px    | 16px    |
+| `txt-14` | \~12px | \~13.41px| \~14px   | \~14px   | \~14px   | 14px    | 14px    |
+*/
+
+
+
+
+
