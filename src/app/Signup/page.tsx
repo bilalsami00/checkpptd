@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 // import { FaLinkedinIn } from "react-icons/fa";
 // import { AiFillInstagram } from "react-icons/ai";
 // import { FaXTwitter } from "react-icons/fa6";
+import { Suspense } from 'react';
 
 export default function SignupPage() {
   const [fullName, setFullName] = useState("");
@@ -28,7 +29,7 @@ export default function SignupPage() {
     fullName: false,
     email: false,
     password: false,
-  });
+  }); 
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setshowConfirmPassword] = useState(false);
@@ -107,6 +108,7 @@ const isFormValid =
   };
 
   return (
+     <Suspense fallback={<div>Loading...</div>}>
     <div className="min-h-screen grid grid-rows-[1fr_auto]">
       {/* <div className="min-h-screen flex flex-col md:flex-row md:justify-between p-4 xl:py-8 xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34"> */}
       {/* === Content Area === */}
@@ -393,5 +395,6 @@ const isFormValid =
         </div>
       </footer> */}
     </div>
+    </Suspense>
   );
 }
