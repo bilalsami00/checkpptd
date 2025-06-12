@@ -243,14 +243,15 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import logo from "../../../public/headerIcon/logo.png";
+// import logo from "../../../public/headerIcon/logo.png";
+import authLogo from "../../../public/authIcons/authLogo.png";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Link from "next/link";
-import { FaFacebookF } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
+// import { FaFacebookF } from "react-icons/fa";
+// import { FaLinkedinIn } from "react-icons/fa";
+// import { AiFillInstagram } from "react-icons/ai";
+// import { FaXTwitter } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -328,7 +329,7 @@ export default function LoginPage() {
     <div className="min-h-screen grid grid-rows-[1fr_auto]">
       {/* === Content Area === */}
       <div
-        className=" flex flex-col  md:flex-row md:justify-between max-sm:p-4 px-4 pt-3 pb-3 [@media(min-width:1600px)]:p- 
+        className=" flex flex-col  md:flex-row md:justify-between max-sm:p-4 px-4 py-8 [@media(min-width:1600px)]:p- 
             xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34"
       >
         {/* Left Section */}
@@ -354,19 +355,37 @@ export default function LoginPage() {
         <div
           className="w-full md:w-[48%] md:h-[calc(100vh-64px)] lg:h-[calc(100vh-66px)] [@media(min-width:1600px)]:h-[calc(100vh-104px)]
                  [@media(min-width:1600px)]::mt-[2rem] max-h-[975px] max-w-[922px] p-[2px] rounded-[48px] flex items-center justify-center"
-          style={{
-            background:
-              "linear-gradient(212.17deg, #EB6793 0%, #5CB0E2 96.39%)",
-          }}
+          // style={{
+          //   background:
+          //     "linear-gradient(212.17deg, #EB6793 0%, #5CB0E2 96.39%)",
+          // }}
         >
-          <div className="bg-white rounded-[48px] p-8 flex items-center justify-center w-full h-full">
-            <Image
-              src={logo}
-              alt="PeptideMD Logo"
-              width={492}
-              height={211}
-              className="w-auto xl:!w-[492px] h-auto xl:!h-[211px] object-contain"
-            />
+          <div className="relative w-full h-full rounded-[16px] overflow-hidden">
+            {/* Background video */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/authIcons/authVid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            {/* Dark translucent overlay */}
+            <div className="absolute inset-0 bg-[#000D1F]/32"></div>
+
+            {/* Foreground content */}
+            <div className="relative z-10 flex items-center justify-center w-full h-full p-8">
+              <Image
+                src={authLogo}
+                alt="PeptideMD Logo"
+                width={492}
+                height={211}
+                className="w-auto xl:!w-[492px] h-auto xl:!h-[211px] object-contain"
+              />
+            </div>
           </div>
         </div>
 
@@ -422,7 +441,7 @@ export default function LoginPage() {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className={`w-full  2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-14 outline-none ${
+                    className={`w-full  2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-14 outline-none border ${
                       errors.password
                         ? "border-red-500"
                         : "border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
@@ -524,7 +543,7 @@ export default function LoginPage() {
               <div className="w-full 2xl:w-[496px] mt-1 flex justify-center">
                 <Link
                   href="/Signup"
-                  className="inline-block text-[#224674] font-semibold underline text-center text-[18px]"
+                  className="inline-block text-[#224674] font-semibold underline text-center txt-18"
                 >
                   I don’t have an account?
                 </Link>
@@ -535,19 +554,17 @@ export default function LoginPage() {
       </div>
 
       {/* === Footer === */}
-      <footer className="bg-[#F2F5F6] py-2">
+      {/* <footer className="bg-[#F2F5F6] py-2">
         <div className="max-w-[1440px] sm:mx-auto sm:px-6 grid grid-cols-3 max-sm:flex max-sm:flex-col max-sm:gap-1 items-center text-[#25292A] txt-16 font-medium">
-          {/* Left: Links */}
+
           <p className="text-left max-md:text-center">
             Privacy Policy <span className="px-4">|</span> Terms & Conditions
           </p>
 
-          {/* Center: Always centered */}
           <span className="text-center">
             © 2025, Nuda Peptide Therapeutics, All Rights Reserved
           </span>
 
-          {/* Right: Social Icons */}
           <div className="flex justify-end max-md:justify-center gap-4 text-[#224674] text-lg">
             <FaFacebookF />
             <FaLinkedinIn />
@@ -555,7 +572,7 @@ export default function LoginPage() {
             <FaXTwitter />
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

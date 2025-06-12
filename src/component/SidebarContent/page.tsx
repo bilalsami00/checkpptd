@@ -8,8 +8,18 @@ interface SidebarContentProps {
   setIsOpen: (open: boolean) => void;
 }
 
+
+
 export default function SidebarContent({ isOpen, setIsOpen }: SidebarContentProps) {
-  return (
+
+ const handleMenuClick = () => {
+    // setIsOpen(!isOpen);
+    console.log("Menu button clicked");
+  }
+
+  
+
+    return (
     <div
       className={`fixed inset-0 bg-app shadow-2xl z-50 \
         transform transition-transform duration-300 ease-in-out \
@@ -17,7 +27,7 @@ export default function SidebarContent({ isOpen, setIsOpen }: SidebarContentProp
     >
       {/* Header Section with Logo & Close Button */}
       <div className="absolute top-4 left-4 right-4 px-6 flex justify-between items-center z-10">
-        <Link href="/">
+        <Link href="/" onClick={handleMenuClick}>
           <Image
             src="/headerIcon/logo.png"
             alt="Logo"
@@ -132,16 +142,16 @@ export default function SidebarContent({ isOpen, setIsOpen }: SidebarContentProp
 
           {/* Buttons for Signup and Login */}
           <div className="flex items-center justify-center gap-1 sm:gap-4 z-10">
-            <button className="bg-[#224674] w-auto h-auto md:w-[174px] md:h-[56px] text-white px-6 py-2 rounded-full transition-colors duration-300">
               <Link href="/Signup" className="txt-18 font-semibold">
+            <button className="bg-[#224674] w-auto h-auto xl:w-[174px] xl:h-[56px] text-white px-6 py-2 rounded-full transition-colors duration-300">
                 Signup
-              </Link>
             </button>
-            <button className="bg-[#C8E4FC] text-[#224674] w-auto h-auto md:w-[174px] md:h-[56px] px-6 py-2 rounded-full transition-colors duration-300">
+              </Link>
               <Link href="/Login" className="txt-18 font-semibold">
+            <button className="bg-[#C8E4FC] text-[#224674] w-auto h-auto xl:w-[174px] xl:h-[56px] px-6 py-2 rounded-full transition-colors duration-300">
                 Log In
-              </Link>
             </button>
+              </Link>
           </div>
         </div>
 
@@ -152,14 +162,14 @@ export default function SidebarContent({ isOpen, setIsOpen }: SidebarContentProp
             alt="small Red"
             width={40}
             height={40}
-            className="absolute hidden xl:block top-[10.5%] left-[90%]"
+            className="absolute hidden xl:block top-[10.5%] left-[88%] 2xl:top-[10.5%] 2xl:left-[90%]"
           />
           <Image
             src="/headerIcon/big-red.png"
             alt="big Red"
             width={70}
             height={70}
-            className="absolute hidden xl:block top-[14%] left-[84%]"
+            className="absolute hidden xl:block top-[13%] left-[81%] 2xl:top-[14%] 2xl:left-[84%]"
           />
           <Image
             src="/headerIcon/big-blue.png"
