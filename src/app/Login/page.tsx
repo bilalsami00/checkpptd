@@ -432,6 +432,7 @@ export default function LoginPage() {
               </div>
 
               {/* Password Field */}
+              
               <div>
                 <label className="block txt-16 font-medium mb-1">
                   Password<span className="text-red-500">*</span>
