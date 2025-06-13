@@ -42,8 +42,8 @@ export default function EmailVerification() {
     <div className="min-h-screen grid grid-rows-[1fr_auto]">
       {/* === Content Area === */}
       <div
-        className=" flex flex-col  md:flex-row md:justify-between max-sm:p-4 px-4 py-8 [@media(min-width:1600px)]:p- 
-      xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34"
+        className=" flex flex-col  md:flex-row md:justify-between max-sm:p-4 px-4 py-6 2xl:py-8 [@media(min-width:1600px)]:p- 
+      xl:pl-10 2xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34"
       >
         {/* Left Section */}
         {/* <div

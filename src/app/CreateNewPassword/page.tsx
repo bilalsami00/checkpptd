@@ -74,7 +74,7 @@ export default function CreateNewPassword() {
 
   return (
     <div className="min-h-screen grid grid-rows-[1fr_auto]">
-      <div className="flex flex-col md:flex-row md:justify-between max-sm:p-4 px-4 py-8 xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34">
+      <div className="flex flex-col md:flex-row md:justify-between max-sm:p-4 px-4 py-6 2xl:py-8 xl:pl-10 2xl:pl-20 gap-4 md:gap-8 xl:gap-12 2xl:gap-34">
         {/* Left Section - Logo */}
         <div
           className="w-full md:w-[48%] md:h-[calc(100vh-64px)] lg:h-[calc(100vh-66px)] [@media(min-width:1600px)]:h-[calc(100vh-104px)] 
