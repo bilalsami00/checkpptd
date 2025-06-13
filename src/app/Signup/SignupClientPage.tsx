@@ -12,6 +12,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 
 export default function SignupClientPage() {
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +28,8 @@ export default function SignupClientPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setshowConfirmPassword] = useState(false);
 
+  
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -33,37 +37,75 @@ export default function SignupClientPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const validate = () => {
-    const newErrors: typeof errors = {};
+//   const validate = () => {
+//     const newErrors: typeof errors = {};
 
-    if (!fullName.trim()) {
-      newErrors.fullName = "Full name is required.";
-    } else if (!/^[a-zA-Z\s]+$/.test(fullName)) {
-      newErrors.fullName = "Full name must contain only letters and spaces.";
-    }
+//     if (!fullName.trim()) {
+//       newErrors.fullName = "Full name is required.";
+//     } else if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+//       newErrors.fullName = "Full name must contain only letters and spaces.";
+//     }
 
-    if (!email) newErrors.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      newErrors.email = "Enter a valid email.";
+//     if (!email) newErrors.email = "Email is required.";
+//     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+//       newErrors.email = "Enter a valid email.";
 
-    if (!password) newErrors.password = "Password is required.";
-    else if (password.length < 6)
-      newErrors.password = "Password must be at least 6 characters.";
+//     if (!password) newErrors.password = "Password is required.";
+//     else if (password.length < 6)
+//       newErrors.password = "Password must be at least 6 characters.";
 
-    if (!confirmPassword) {
-      newErrors.confirmPassword = "Confirm Password is required.";
-    } else if (confirmPassword !== password) {
-      newErrors.confirmPassword = "Passwords do not match.";
-    }
+//     if (!confirmPassword) {
+//       newErrors.confirmPassword = "Confirm Password is required.";
+//     } else if (confirmPassword !== password) {
+//       newErrors.confirmPassword = "Passwords do not match.";
+//     }
 
-    setErrors(newErrors);
-    return newErrors;
-  };
+//     setErrors(newErrors);
+//     return newErrors;
+//   };
+const validate = () => {
+  const newErrors: typeof errors = {};
 
-  const isFormValid = () => {
-    const currentErrors = validate();
-    return Object.keys(currentErrors).length === 0;
-  };
+  if (!formSubmitted) {
+    setErrors({});
+    return {};
+  }
+
+  if (!fullName.trim()) {
+    newErrors.fullName = "Full name is required.";
+  } else if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+    newErrors.fullName = "Full name must contain only letters and spaces.";
+  }
+
+  if (!email) newErrors.email = "Email is required.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    newErrors.email = "Enter a valid email.";
+
+  if (!password) newErrors.password = "Password is required.";
+  else if (password.length < 6)
+    newErrors.password = "Password must be at least 6 characters.";
+
+  if (!confirmPassword) {
+    newErrors.confirmPassword = "Confirm Password is required.";
+  } else if (confirmPassword !== password) {
+    newErrors.confirmPassword = "Passwords do not match.";
+  }
+
+  setErrors(newErrors);
+  return newErrors;
+};
+
+
+//   const isFormValid = () => {
+//     const currentErrors = validate();
+//     return Object.keys(currentErrors).length === 0;
+//   };
+const isFormValid = () =>
+  fullName.trim() &&
+  email.trim() &&
+  password.trim() &&
+  confirmPassword.trim();
+
 
   const handleBack = () => {
     if (from === "login") {
@@ -75,17 +117,29 @@ export default function SignupClientPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate(); // Run validation
-    if (Object.keys(validationErrors).length > 0) return;
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     const validationErrors = validate(); // Run validation
+//     if (Object.keys(validationErrors).length > 0) return;
 
-    setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1500));
+//     setIsSubmitting(true);
+//     await new Promise((r) => setTimeout(r, 1500));
 
-    // ✅ Redirect after loading finishes
-    router.push("/SixDigitVerify?from=signup");
-  };
+//     // ✅ Redirect after loading finishes
+//     router.push("/SixDigitVerify?from=signup");
+//   };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setFormSubmitted(true);
+
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) return;
+
+  setIsSubmitting(true);
+  await new Promise((r) => setTimeout(r, 1500));
+  router.push("/SixDigitVerify?from=signup");
+};
+
 
   return (
     <div className="min-h-screen grid grid-rows-[1fr_auto]">
@@ -287,7 +341,7 @@ export default function SignupClientPage() {
               </p>
 
               {/* Submit Button */}
-              <button
+              {/* <button
                 type="submit"
                 className={`w-full txt-18 2xl:w-[496px] 2xl:h-[56px] py-3 rounded-full font-semibold transition ${
                   !isFormValid
@@ -305,7 +359,18 @@ export default function SignupClientPage() {
                 ) : (
                   "Agree and Sign up"
                 )}
-              </button>
+              </button> */}
+<button
+  type="submit"
+  disabled={!isFormValid()}
+  className={`w-full txt-18 2xl:w-[496px] 2xl:h-[56px] py-3 rounded-full font-semibold transition ${
+    !isFormValid()
+      ? "bg-[#D8DFE0] cursor-not-allowed text-[#9EA9AA]"
+      : "bg-[#224674] text-white hover:bg-[#1b385d]"
+  }`}
+>
+  Agree and Sign Up
+</button>
 
               {/* login Link */}
               <div className="w-full 2xl:w-[496px] mt-1 flex justify-center ">
