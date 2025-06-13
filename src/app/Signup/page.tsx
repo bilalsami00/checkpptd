@@ -8,7 +8,7 @@ import { useState } from "react";
 import authLogo from "../../../public/authIcons/authLogo.png";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import Link from "next/link";
+import Link from "next/link"; 
 import { useRouter } from "next/router";
 // import { useRouter, useSearchParams } from "next/navigation";
 
