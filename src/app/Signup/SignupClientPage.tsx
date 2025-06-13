@@ -66,10 +66,7 @@ export default function SignupClientPage() {
 const validate = () => {
   const newErrors: typeof errors = {};
 
-  if (!formSubmitted) {
-    setErrors({});
-    return {};
-  }
+  
 
   if (!fullName.trim()) {
     newErrors.fullName = "Full name is required.";
@@ -89,10 +86,17 @@ const validate = () => {
     newErrors.confirmPassword = "Confirm Password is required.";
   } else if (confirmPassword !== password) {
     newErrors.confirmPassword = "Passwords do not match.";
+        newErrors.password = "Password must be at least 6 characters.";
+
   }
 
   setErrors(newErrors);
   return newErrors;
+
+//   if (!formSubmitted) {
+//     setErrors({});
+//     return {};
+//   }
 };
 
 
