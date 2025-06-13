@@ -66,8 +66,6 @@ export default function SignupClientPage() {
 const validate = () => {
   const newErrors: typeof errors = {};
 
-  
-
   if (!fullName.trim()) {
     newErrors.fullName = "Full name is required.";
   } else if (!/^[a-zA-Z\s]+$/.test(fullName)) {
@@ -85,8 +83,8 @@ const validate = () => {
   if (!confirmPassword) {
     newErrors.confirmPassword = "Confirm Password is required.";
   } else if (confirmPassword !== password) {
-    newErrors.confirmPassword = "Passwords do not match.";
-        newErrors.password = "Password must be at least 6 characters.";
+    newErrors.confirmPassword = "Confirm Passwords do not match.";
+        newErrors.password = "Password do not match.";
 
   }
 
@@ -132,12 +130,26 @@ const isFormValid = () =>
 //     // ✅ Redirect after loading finishes
 //     router.push("/SixDigitVerify?from=signup");
 //   };
+// const handleSubmit = async (e: React.FormEvent) => {
+//   e.preventDefault();
+//   setFormSubmitted(true);
+
+//   const validationErrors = validate();
+//   if (Object.keys(validationErrors).length > 0) return;
+
+//   setIsSubmitting(true);
+//   await new Promise((r) => setTimeout(r, 1500));
+//   router.push("/SixDigitVerify?from=signup");
+// };
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setFormSubmitted(true);
 
-  const validationErrors = validate();
-  if (Object.keys(validationErrors).length > 0) return;
+  const validationErrors = validate(); // get newErrors directly
+
+  if (Object.keys(validationErrors).length > 0) {
+    return; // don't continue if there are validation issues
+  }
 
   setIsSubmitting(true);
   await new Promise((r) => setTimeout(r, 1500));
@@ -225,7 +237,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   className={`w-full  2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-14 outline-none ${
-                    errors.email
+                    errors.fullName
                       ? "border border-red-500"
                       : "border border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
                   }`}
