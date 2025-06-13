@@ -109,11 +109,18 @@ const isFormValid = () =>
   confirmPassword.trim();
 
 
+  // const handleBack = () => {
+  //   if (from === "login") {
+  //     router.push("/Login");
+  //   } else if (from === "home") {
+  //     router.push("/");
+  //   } else {
+  //     router.back(); // fallback: browser history
+  //   }
+  // };
   const handleBack = () => {
-    if (from === "login") {
+    if (from === "signup") {
       router.push("/Login");
-    } else if (from === "home") {
-      router.push("/");
     } else {
       router.back(); // fallback: browser history
     }
