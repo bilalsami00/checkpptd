@@ -201,7 +201,8 @@ export default function PeptideDatabase() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="
-              px-8 py-4 max-sm:py-3 border-2 border-[#88D3FF] bg-app text-app rounded-full  
+              px-8 py-4 border-2 border-[#88D3FF] bg-app text-app rounded-full 
+              shadow-sm focus:ring focus:ring-[#88D3FF]/60 focus:border-[#88D3FF] 
               outline-none text-lg md:text-xl font-semibold transition duration-100 
               w-[190px] lg:w-[400px] [@media(min-width:1600px)]:h-[80px] 
               [@media(min-width:1600px)]:w-[460px]
@@ -549,7 +550,7 @@ export default function PeptideDatabase() {
                     </tr>
                   ))}
                 </>
-              )}
+              )} 
             </tbody>
           </table>
         </div>
