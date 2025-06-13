@@ -122,9 +122,9 @@ const isFormValid = () =>
     if (from === "signup") {
       router.push("/Login");
     } else {
-      router.back(); // fallback: browser history
-    }
-  };
+    router.push("/");  // still use replace for Home to avoid Verify loop
+  }
+}; 
 
 //   const handleSubmit = async (e: React.FormEvent) => {
 //     e.preventDefault();
