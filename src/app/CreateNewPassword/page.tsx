@@ -117,7 +117,7 @@ export default function CreateNewPassword() {
         <div className="md:w-[52%] flex justify-start items-center max-sm:mt-6 max-sm:mb-20">
           <div className="w-full max-w-2xl max-sm:p-2 lg:px-4  bg-white rounded-3xl">
             {/* Back Button */}
-            <Link href="/SixDigitVerify">
+            <Link href="/Login">
               <div className="mb-6">
                 <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-200 hover:bg-gray-50 transition">
                   <IoIosArrowRoundBack className="text-gray-700 txt-24" />
