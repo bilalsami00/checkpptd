@@ -203,7 +203,7 @@ const articles = [
 export default function RecommendedArticles() {
   return (
     // <div className="bg-white pt-2 xl:pt-9 2xl:pt-13 [@media(min-width:1650px)]:pt-8  rounded-xl">
-<div className="bg-white pt-2 [@media(min-width:1600px)]:pt-8 rounded-xl">
+<div className="bg-white pt-2 xl:pt-8 2xl:pt-2 [@media(min-width:1600px)]:pt-8  rounded-xl">
 
       <div className="flex justify-between items-center mb-1">
         <h2 className="txt-28 font-medium">Recommended Articles</h2>
