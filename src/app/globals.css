@@ -112,6 +112,9 @@ body {
   .txt-30 {
     font-size: clamp(18px, 0.96vw + 15.2px, 30px);
   }
+  .txt-28 {
+    font-size: clamp(18px, 0.94vw + 13.2px, 28px);
+  }
   .txt-26 {
     font-size: clamp(17px, 0.94vw + 15px, 26px);
   }
@@ -150,6 +153,17 @@ body {
       font-size: clamp(12px, 0.34vw + 10.8px, 14px);
     }
 
+    .txt-12 {
+    font-size: clamp(10.5px, 0.28vw + 9px, 12px);
+  }
+
+  .txt-10 {
+    font-size: clamp(9px, 0.2vw + 7.5px, 10px);
+  }
+
+  .txt-8 {
+    font-size: clamp(7px, 0.16vw + 5.5px, 8px);
+  }
 
 
 }
@@ -164,6 +178,7 @@ body {
 | `txt-34` | \~18px | \~22px   | \~26px   | \~30px   | \~32px   | 34px    | 34px    |
 | `txt-32` | \~20px | \~24.15px| \~27.1px | \~30px   | \~31.8px | 32px    | 32px    |
 | `txt-30` | \~18px | \~22px   | \~25px   | 30px     | 30px     | 34px    | 34px    |
+| `txt-28` | \~18px | \~20.4px | \~22.8px | \~25.2px | \~26.7px | 28px    | 28px    |
 | `txt-26` | \~17px | \~20px   | \~23px   | 26px     | 26px     | 26px    | 26px    |
 | `txt-24` | \~16px | \~18.6px | \~20px   | \~22.4px | \~23.8px | 24px    | 24px    |
 | `txt-22` | \~16px | \~18.5px | \~20.5px | 22px     | 22px     | 22px    | 22px    |
@@ -171,6 +186,11 @@ body {
 | `txt-18` | \~14px | \~14.3px | \~15.3px | \~16.3px | \~17px   | 18px    | 18px    | 
 | `txt-16` | \~13px | \~13px   | \~14px   | \~15px   | \~15.6px | 16px    | 16px    |
 | `txt-14` | \~12px | \~13.41px| \~14px   | \~14px   | \~14px   | 14px    | 14px    |
+| `txt-12` | 10.5px | \~11px   | \~11.7px | \~12px   | 12px     | 12px    | 12px    |
+| `txt-10` | 9px    | \~9.4px  | \~9.8px  | 10px     | 10px     | 10px    | 10px    |
+| `txt-8`  | 7px    | \~7.5px  | \~7.9px  | \~8px    | 8px      | 8px     | 8px     |
+
+
 */
 
 
