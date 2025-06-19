@@ -40,9 +40,6 @@
 //   );
 // }
 
-
-
-
 // popup work 18/6/25 ////////////////////
 "use client";
 
@@ -54,13 +51,21 @@ import StartTracking from "@/component/DashboardComponents/StartTracking/StartTr
 import RecommendedPodcasts from "@/component/DashboardComponents/RecommendedPodcasts/RecommendedPodcasts";
 import PepiAI from "@/component/DashboardComponents/PepiAI/PepiAI";
 import RecommendedCaseStudies from "@/component/DashboardComponents/RecommendedCaseStudies/RecommendedCaseStudies";
-import DashboardPopup from "@/component/DashboardComponents/Dashboard-popup/page";
+import DashboardPopup from "../../component/DashboardComponents/Dashboard-popup/page";
+import SuccessModal from "@/component/DashboardComponents/SuccessModal/SuccessModal";
 import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const router = useRouter();
   const [showPopup, setShowPopup] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  // TEMP: Reset subscription on every load for testing
+  //   useEffect(() => {
+  //     localStorage.removeItem("hasSubscribed");
+  //   }, []);
+
+  // Show popup on first visit if not subscribed
   useEffect(() => {
     const hasSubscribed = localStorage.getItem("hasSubscribed");
     if (!hasSubscribed) {
@@ -71,7 +76,12 @@ export default function DashboardPage() {
   const handleSubscribe = () => {
     localStorage.setItem("hasSubscribed", "true");
     setShowPopup(false);
-    router.push("/subscription"); // Change this route later
+    // router.push("/Subscription");
+    setShowSuccessModal(true); // show modal instead of navigating
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
   };
 
   const handleMaybeLater = () => {
@@ -80,9 +90,24 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen px-2 max-lg:px-4 [@media(min-width:1600px)]:px- ">
+      {/* Manual popup trigger button */}
+      {/* <div className="flex justify-end mt-4">
+        <button
+          className="text-sm text-[#C8E4FC] underline"
+          onClick={() => setShowPopup(true)}
+        >
+          Change Plan
+        </button>
+      </div> */}
+
       {showPopup && (
-        <DashboardPopup onClose={handleMaybeLater} onSubscribe={handleSubscribe} />
+        <DashboardPopup
+          onClose={handleMaybeLater}
+          onSubscribe={handleSubscribe}
+        />
       )}
+
+      {showSuccessModal && <SuccessModal onClose={handleCloseSuccessModal} />}
 
       <div className="flex max-lg:flex-col gap-6 py-8">
         <div className="w-[75%] max-lg:w-full max-2xl:gap-10  flex flex-col gap-6">
